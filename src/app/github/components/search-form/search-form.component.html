@@ -1,0 +1,24 @@
+<div class="search-container">
+  <div class="input-wrapper">
+    <p-floatLabel>
+      <input
+        pInputText
+        [(ngModel)]="username"
+        id="username"
+        type="text"
+        (keyup.enter)="onSearch()"
+        aria-label="Campo de busca de usuário do GitHub"
+        placeholder=" "
+      />
+      <label for="username">Usuário do GitHub</label>
+    </p-floatLabel>
+    <button
+      pButton
+      type="button"
+      icon="pi pi-search"
+      label="Buscar"
+      class="search-button"
+      (click)="onSearch()"
+    ></button>
+  </div>
+</div>

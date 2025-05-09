@@ -1,0 +1,44 @@
+<p-toast></p-toast>
+
+<app-header ></app-header>
+<div class="container">
+  <app-search-form (search)="onSearch($event)"></app-search-form>
+
+  <p-progressSpinner *ngIf="loading" styleClass="custom-spinner"></p-progressSpinner>
+<div *ngIf="!user && !loading" class="info-placeholder">
+  <h2>Bem-vindo ao Buscador de Usuários GitHub</h2>
+  <p>Utilize o campo acima para buscar por um usuário do GitHub.</p>
+  <p>Ao buscar, serão exibidas as informações do perfil e seus repositórios públicos.</p>
+</div>
+
+  <div *ngIf="user" class="user-info">
+    <div class="user-header">
+      <img [src]="user.avatar_url" [alt]="'Avatar de ' + user.name" class="user-avatar" />
+      <div class="user-details">
+        <h2>{{ user.name }} ({{ user.login }})</h2>
+        <p>{{ user.bio }}</p>
+        <p><strong>Localização:</strong> {{ user.location }}</p>
+        <p><strong>Seguidores:</strong> {{ user.followers }} | <strong>Seguindo:</strong> {{ user.following }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="repos.length" class="repos-table">
+    <p-table [value]="repos" sortField="stargazers_count" [sortOrder]="-1">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name">Nome <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="stargazers_count">Estrelas <p-sortIcon field="stargazers_count"></p-sortIcon></th>
+          <th>Descrição</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-repo>
+        <tr>
+          <td><a [href]="repo.html_url" target="_blank" rel="noopener noreferrer">{{ repo.name }}</a></td>
+          <td>{{ repo.stargazers_count }}</td>
+          <td>{{ repo.description }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

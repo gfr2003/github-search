@@ -1,0 +1,9 @@
+{
+  "login": "octocat",
+  "name": "The Octocat",
+  "bio": "Just a test user",
+  "location": "San Francisco",
+  "followers": 20,
+  "following": 0,
+  "avatar_url": "https://avatars.githubusercontent.com/u/583231?v=4"
+}
