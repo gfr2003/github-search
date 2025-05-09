@@ -1,59 +1,99 @@
-# GithubUserSearch
+# 🧠 GitHub User Search App – Iti Itaú Challenge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
+Aplicação Angular que permite buscar usuários do GitHub e visualizar seus dados públicos, como perfil e repositórios. Criado como parte de um desafio técnico do Iti Itaú, com foco em boas práticas, performance e experiência do usuário.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🔍 Funcionalidades
 
-```bash
-ng serve
-```
+- 🔎 Busca de usuários do GitHub
+- 📄 Exibição de perfil completo (avatar, bio, localização, seguidores, etc.)
+- 📁 Listagem dos repositórios públicos com ordenação por estrelas
+- 🧪 Testes E2E com Cypress
+- ⚙️ Feedback visual com toast e spinner do PrimeNG
+- 📱 Responsivo e mobile-first
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Tecnologias
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- [Angular 17+](https://angular.io/)
+- [PrimeNG](https://primefaces.org/primeng/)
+- [Cypress](https://www.cypress.io/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [RxJS](https://rxjs.dev/)
+- [GitHub REST API](https://docs.github.com/en/rest)
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## 📦 Instalação
 
 ```bash
-ng build
+# Clone o repositório
+git clone https://github.com/gfr2003/github-user-search.git
+cd github-user-search
+
+# Instale as dependências
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🧪 Rodando localmente
 
 ```bash
-ng test
+# Inicie a aplicação
+npm start
+# Acesse: http://localhost:4200
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🧪 Testes E2E
 
 ```bash
-ng e2e
+# Rodar testes com Cypress
+npx cypress open
+# Ou headless
+npx cypress run
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+> Os testes cobrem:
+> - Mensagem inicial
+> - Busca válida e exibição de dados
+> - Tratamento de erro (usuário inexistente)
+> - Verificação do loading spinner
+> - Interceptação de chamadas com `cy.intercept`
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## ⚠️ Limitação da API
+
+A [GitHub REST API](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) impõe limites de requisições anônimas (60/hora). Para evitar isso, considere autenticar suas chamadas usando token pessoal no serviço.
+
+---
+
+## 🧩 Estrutura de pastas
+
+```
+src/
+├── app/
+│   ├── components/        # Componentes reutilizáveis (Header, SearchForm)
+│   ├── pages/             # Páginas (UserPage)
+│   ├── services/          # Serviço de integração com GitHub API
+│   ├── models/            # Interfaces de dados da API
+├── assets/
+│   └── favicon-itau.png   # Favicon personalizado
+├── environments/          # Configurações de ambiente
+```
+
+---
+
+## 💡 Melhorias futuras (não implementei devido ao tempo)
+
+- Autenticação via token para evitar rate limit
+- Paginação dos repositórios
+- Internacionalização (i18n)
+- Cache de resultados
+
+---
